@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<title>Food Court</title>
+	<style>
+	   body{
+	      background-image: url("food court.jpg");
+		  background-size:cover;
+		  background-repeat:no-repeat;
+	   }
+	   #box{
+	      background-color: lightblue;
+		  opacity:0.9;
+		  padding: 2px;
+		  height: 300px;
+		  width: 500px;
+		  position: absolute;
+		  top: 30%;
+		  left: 30%;
+		  text-align: center;
+		  border-radius: 20px
+	   }
+	   .head{
+	      font-size:40px;
+		  color: green;
+		  font-style: bold;
+	   }
+	   label{
+	      font-size:30px;
+		  color: green;
+		  font-style: bold;
+	   }
+	   input[type="submit"]{
+	      font-size: 20px;
+		  background-color: lightblue;
+		  border-radius: 10px;
+		  width:100px;
+		  height:40px;
+		  box-shadow:5px 5px 5px lightblue ;
+	   }
+	   input[type="textfield"],input[type="password"]{
+	      font-size: 20px;
+		  background-color: lightblue;
+		  border-radius: 10px;
+		  width:300px;
+		  height:40px;
+	   }
+	   a:link{
+	   color:red;
+	   }
+	   a:hover{
+	   color:violet;
+	   }
+	</style>
+	<script type="text/javascript">
+function validateForename(field)
+{
+     return (field == "") ? "No Forename was entered.\n" : ""
+}
+function validatePassword(field)
+{
+    if (field == "")
+     	return"No Password was entered.\n"
+    else if (field.length < 6)
+        return"Passwords must be at least 6 characters.\n"
+    else if (!/[a-z]/.test(field) || ! /[A-Z]/.test(field) || !/[0-9]/.test(field))
+	    return"Passwords require one each of a-z, A-Z and 0-9.\n"
+    return""
+ }
+function validate(form)
+{
+   fail = validateForename(form.forename.value)
+   fail += validatePassword(form.pwd.value)
+   if (fail == "") 
+	 return true
+   else
+   { 
+	alert(fail);
+	return false
+  }
+ }
+</script>
+</HEAD>
+<BODY>
+<div id="box">
+			<div class="head"><b>Log In</b></div><br><br>
+			<form onsubmit="return validate(this)" action="check.php" method="post">
+				<label>Username :</label>
+				<input type="textfield" name="username" placeholder="Enter your user name">
+				<br><br>
+				<label>Password :</label>
+				<input type="password" name="pwd" placeholder="Enter your Password">
+				<br>
+				<br>
+				<input type="submit" name="btn" value="Login">
+			</form>
+		<a href="registrationpage.html">Sign Up</a><br>
+		<a href="#">Forgot Password</a>
+		</div>
+</BODY>
+</HTML>
